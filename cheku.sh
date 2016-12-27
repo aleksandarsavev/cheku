@@ -8,6 +8,8 @@
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 USERFILE="$PARENT/cheku-user"
 
+echo $$ > /run/cheku.pid
+
 # Sleep time. This is the loop period for each check.
 SLEEP=5
 
