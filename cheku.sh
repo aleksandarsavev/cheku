@@ -8,31 +8,22 @@
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 INSTALL=$PARENT
 USERFILE="$INSTALL/cheku-user"
-USERFOUNDFILE="$INSTALL/cheku-found"
-USERFOUNDOLDFILE="$INSTALL/cheku-found-old"
 
 # Sleep time. This is the loop period for each check.
 SLEEP=5
 
 USER=$(<$USERFILE)
+LOG=""
+LOG_OLD=""
 
 while true
 do
-    if [ -e "$USERFOUNDFILE" ]
-    then
-        mv "$USERFOUNDFILE" "$USERFOUNDOLDFILE"
-    fi
+    $LOG_OLD=$LOG
+    $LOG=lastlog -u $USER | grep "^$USER"
     
-    lastlog | grep "^$USER " > $USERFOUNDFILE
-    
-    if [ -e "$USERFOUNDOLDFILE" ]
+    if [ "$LOG" != "$LOG_OLD" ]
     then
-        LOG=$(<$USERFOUNDFILE)
-        LOG_OLD=$(<$USERFOUNDOLDFILE)
-        if [ "$LOG" != "$LOG_OLD" ]
-        then
-            logger -p daemon.info "User [$USER] has logged into the system! [$LOG]"
-        fi
+        logger -p daemon.info "User [$USER] has logged into the system! [$LOG]"
     fi
 
     sleep $SLEEP
