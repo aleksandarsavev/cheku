@@ -8,8 +8,8 @@
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 INSTALL=$PARENT
 USERFILE="$INSTALL/cheku-user"
-USERFOUNDFILE="$INSTALL/checku-found"
-USERFOUNDOLDFILE="$INSTALL/checku-found-old"
+USERFOUNDFILE="$INSTALL/cheku-found"
+USERFOUNDOLDFILE="$INSTALL/cheku-found-old"
 
 # Sleep time. This is the loop period for each check.
 SLEEP=5
