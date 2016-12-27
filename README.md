@@ -9,13 +9,13 @@ The script starts an infinite process.
 
 1. cheku.sh
 
-This is the main script. It monitors the login session information of a specific user.
-The user is specified in the file **cheku-user**.
+ This is the main script. It monitors the login session information of a specific user.
+ The user is specified in the file **cheku-user**.
 
 2. cheku-config.sh
 
-This is a help-script. It's the interactive creator of the **cheku-user**.
+ This is a help-script. It's the interactive creator of the **cheku-user**.
 
 3. cheku-daemon.sh
 
-This script starts **cheku.sh** as a daemon in background.
+ This script starts **cheku.sh** as a daemon in background.
