@@ -6,8 +6,7 @@
 
 # Path variables
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
-INSTALL=$PARENT
-USERFILE="$INSTALL/cheku-user"
+USERFILE="$PARENT/cheku-user"
 
 # Sleep time. This is the loop period for each check.
 SLEEP=5
@@ -18,8 +17,8 @@ LOG_OLD=""
 
 while true
 do
-    $LOG_OLD=$LOG
-    $LOG=lastlog -u $USER | grep "^$USER"
+    LOG_OLD="$LOG"
+    LOG=`lastlog -u $USER | grep "^$USER"`
     
     if [ "$LOG" != "$LOG_OLD" ]
     then
@@ -28,4 +27,3 @@ do
 
     sleep $SLEEP
 done
-
