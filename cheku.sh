@@ -5,7 +5,8 @@
 # The script checks repeatedly for the login sessions of a given user.
 
 # Path variables
-INSTALL="/root/hw6"
+PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
+INSTALL=$PARENT
 USERFILE="$INSTALL/cheku-user"
 USERFOUNDFILE="$INSTALL/checku-found"
 USERFOUNDOLDFILE="$INSTALL/checku-found-old"

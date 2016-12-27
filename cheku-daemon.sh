@@ -7,15 +7,16 @@ set -e
 NAME=checku
 PIDFILE=/var/run/$NAME.pid
 #This is the command to be run, give the full pathname
-DAEMON=/root/hw6/cheku.sh
+PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
+DAEMON=$PARENT/cheku.sh
 DAEMON_OPTS=""
 
-export PATH="${PATH:+$PATH:}/usr/sbin:/sbin:/root/hw6/"
+#export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 
 case "$1" in
   start)
         echo -n "Starting daemon: "$NAME
-	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+	start-stop-daemon --start --quiet --background --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
         echo "."
 	;;
   stop)
@@ -25,7 +26,7 @@ case "$1" in
 	;;
   restart)
         echo -n "Restarting daemon: "$NAME
-	start-stop-daemon --stop --quiet --oknodo --retry 30 --pidfile $PIDFILE
+	start-stop-daemon --stop --quiet --background --oknodo --retry 30 --pidfile $PIDFILE
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
 	echo "."
 	;;
