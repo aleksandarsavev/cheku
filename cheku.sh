@@ -20,7 +20,7 @@ do
     LOG_OLD="$LOG"
     LOG=`lastlog -u $USER | grep "^$USER"`
     
-    if [ "$LOG" != "$LOG_OLD" ]
+    if [ "$LOG" != "$LOG_OLD" && LOG_OLD != "" ]
     then
         logger -p daemon.info "User [$USER] has logged into the system! [$LOG]"
     fi
