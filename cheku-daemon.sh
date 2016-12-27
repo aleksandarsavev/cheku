@@ -4,7 +4,7 @@
 set -e
 
 # Must be a valid filename
-NAME=checku
+NAME=cheku
 PIDFILE=/var/run/$NAME.pid
 #This is the command to be run, give the full pathname
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
