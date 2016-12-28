@@ -1,4 +1,5 @@
-# cheku
+# cheku 
+
 CHEcK Users on your linux
 
 CHEKU is a script-based monitoring program.
@@ -30,3 +31,5 @@ The script starts an infinite process.
 
 3. or start the script **cheku-daemon.sh**. It will run the **cheku.sh** in the background.
  It expects one of the following modes **start, stop, restart**.
+
+[GitHub repository](https://github.com/savevjr/cheku)
