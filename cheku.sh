@@ -8,6 +8,13 @@
 PARENT=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 USERFILE="$PARENT/cheku-user"
 
+
+if [ ! -f "$USERFILE" ]; then
+    # If the configuration file is missing stop the script
+    echo "File not found! File: $USERFILE"
+    exit
+fi
+
 echo $$ > /run/cheku.pid
 
 # Sleep time. This is the loop period for each check.
